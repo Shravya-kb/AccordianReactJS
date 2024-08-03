@@ -1,4 +1,37 @@
+// import { faMoon } from "@fortawesome/free-regular-svg-icons";
+import React from "react";
+import { IoMoon } from "react-icons/io5";
+import { IoSunny } from "react-icons/io5";
+// import { IconContext } from "react-icons";
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useState } from "react";
+
+
+function App() {
+
+  const [dark, setDark] = React.useState(false);
+
+  const darkModeHandler = () => {
+      setDark(!dark);
+      document.body.classList.toggle("dark");
+  }
+
+  return (
+      <div className="bg-yellow-100 dark:bg-blue-900">
+          <button onClick={()=> darkModeHandler()}>
+              {
+                  
+                  dark && <IoSunny />
+              }
+              {
+                  !dark && <IoMoon />
+              }
+          </button>
+          <Acc/>
+      </div>
+  );
+}
+
 
 /* eslint-disable react/prop-types */
 const faqs = [
@@ -16,7 +49,7 @@ const faqs = [
   },
 ];
 
-function App() {
+function Acc() {
   return (
     <div>
       <AccordianComponent />
@@ -26,8 +59,8 @@ function App() {
 function AccordianComponent() {
   return (
     <div className="bg-blue-300 h-screen flex justify-center items-center flex-col gap-4">
-      {faqs.map((faq, i) => (
-        <Modal title={faq.title} text={faq.text} key={i} index={i} />//what is the differennce between key and index here?
+      {faqs.map((faq, shravya) => (
+        <Modal title={faq.title} text={faq.text} key={shravya} index={shravya} />//what is the differennce between key and index here?
       ))}
     </div>
   );
