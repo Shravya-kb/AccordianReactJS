@@ -27,13 +27,13 @@ function AccordianComponent() {
   return (
     <div className="bg-blue-300 h-screen flex justify-center items-center flex-col gap-4">
       {faqs.map((faq, i) => (
-        <Modal title={faq.title} text={faq.text} key={i} index={i} />
+        <Modal title={faq.title} text={faq.text} key={i} index={i} />//what is the differennce between key and index here?
       ))}
     </div>
   );
 }
 
-function Modal({ title, text, index }) {
+function Modal({ title, text, index }) { 
   const [isOpen, setIsOpen] = useState(false);
   function handleIsOpen() {
     setIsOpen((isOpen) => !isOpen);
@@ -41,16 +41,16 @@ function Modal({ title, text, index }) {
   return (
     <div>
       <div
-        className={` bg-white  w-[500px] flex flex-col gap-2 p-4 rounded-lg cursor-pointer shadow-lg shadow-green-500 text-center font-semibold  ${isOpen ? "border-green-400  border-t-8": null}`}
+        className={`bg-white  w-[500px] flex flex-col gap-2 p-4 rounded-lg cursor-pointer shadow-lg shadow-green-500 text-center font-semibold  ${isOpen ? "border-green-400  border-t-8": null}`}
         onClick={handleIsOpen}
       >
         <div className="flex justify-between px-4 py-2">
-          <p>{index + 1}</p>
-           <p className={isOpen? `text-green-400  `: `text-black` }>{title}</p>
+          <p>{index + 1}</p>   
+           <p className={isOpen? `text-green-400`: `text-black` }>{title}</p>
           {/* // <p>{title}</p> */}
-          <p>{isOpen ? "-" : "+"}</p>
+          <p className={isOpen ? "text-lime-500 font-black": null}>{isOpen ? "-" : "+"}</p>
         </div>
-        {isOpen ? <p className="border-gray-400 border-t pt-4">{text}</p> : null}
+        {isOpen ? <p className="border-gray-400 border-t pt-4 font-light">{text}</p> : null}
       </div>
     </div>
   );
